@@ -1,7 +1,17 @@
 # spf-bypass
 PLEASE NOTE THIS PROJECT WILL BE SUBJECT TO FREQUENT CHANGES
 
-This project automates and demonstrates SPF-bypass techniques utilised by phishers to abuse domains that haven't been secured by DMARC.
+This project is meant to educate defenders and demonstrate the ease at which threat actors can abuse insecure domains for the delivery of spoofed email.
+Utilising a security deficiency known as SPF-bypass, threat actors can deliver emails which provide no indication of malicious intent and can fool the most experienced Security professionals.
+
+Please see https://dmarc.org/wiki/FAQ for a detailed overview of email authentication protocols (i.e. SPF, DKIM and DMARC).
+Please see http://www.circleid.com/posts/782012_spammer_get_around_spf/ for a detailed overview of how professionnal spammers bypass SPF where DMARC hasn't been setup in a hardened configuration.
+
+Prerequisites to successfully deliver spoofed mail (utilising SPF-bypass techniques):
+1. A domain you control (approx. cost $12-15 AUD/yr - see https://au.godaddy.com/)
+2. A Server or VPN with a dedicated public IP that hasn't blocked outbound traffic over port 25 (approx. $80-150 AUD/yr)
+3. Configure the DNS TXT Zone file for the purchased domain, to include the Server or VPN public IP in its public SPF record (see https://au.godaddy.com/help/add-an-spf-record-19218)
+Upon completion of the above 3 steps, you'll be able to successfully demonstrate the delivery of spoofed mail utilising SPF-bypass techniques
 
 The executable itself simply provides an interactive console for implementing the below telnet commands that can be executed on any Windows or Linux machine.
 
