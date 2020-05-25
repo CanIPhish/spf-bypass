@@ -5,7 +5,7 @@ This project is meant to educate defenders and demonstrate the ease at which thr
 Utilising a security deficiency known as SPF-bypass, threat actors can deliver emails which provide no indication of malicious intent and can fool the most experienced Security professionals.
 
 Please see https://dmarc.org/wiki/FAQ for a detailed overview of email authentication protocols (i.e. SPF, DKIM and DMARC).
-Please see http://www.circleid.com/posts/782012_spammer_get_around_spf/ for a detailed overview of how professionnal spammers bypass SPF where DMARC hasn't been setup in a hardened configuration.
+Please see https://blog.trendmicro.com/trendlabs-security-intelligence/how-cybercriminals-dodge-email-authentication/ for a detailed overview of how professionnal spammers bypass SPF where DMARC hasn't been setup in a hardened configuration.
 
 Prerequisites to successfully deliver spoofed mail (utilising SPF-bypass techniques):
 1. A domain you control (approx. cost $12-15 AUD/yr - see https://au.godaddy.com/)
