@@ -28,6 +28,7 @@ To perform an SPF-bypass attack, simply run the below telnet commands that can b
     This is a test
 
     .
+
 What we're abusing here is a weakness in the way emails are delivered, authenticated and presented to a users screen. If we break down each component of the above mail delivery we can see how the SPF-bypass abuses a domain misalignment between the 'SMTP MailFrom' and 'Mail Header From':
 
     telnet target.mailserver.com 25 
@@ -39,3 +40,5 @@ What we're abusing here is a weakness in the way emails are delivered, authentic
     to: target@target.com.au
     subject: Presentation - Email Demo
     This is a test
+    
+    .
