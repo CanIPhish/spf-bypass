@@ -14,7 +14,7 @@ Prerequisites to successfully deliver spoofed mail (utilising SPF-bypass techniq
 
 Upon completion of the above 3 steps, you'll be able to successfully demonstrate the delivery of spoofed mail utilising SPF-bypass techniques
 
-To perform an SPF-bypass attack, simply run the below telnet commands that can be executed on any Windows or Linux endpoint. Replace <target.mailserver.com> with the target mail server you're delivering the spoofed email to (i.e. the recipient - lookup the MX record of the recipient domain to identify this), replace <attacker@attackerdomain.com> with the domain you procured and setup earlier, replace <Legitimate_Sender_spoofed.com> with the address and domain you're spoofing and replace <target@target.com.au> with your target recipient.
+To perform an SPF-bypass attack, simply run the below telnet commands that can be executed on any Windows or Linux endpoint. Replace <target.mailserver.com> with the target mail server you're delivering the spoofed email to (i.e. the recipient - lookup the MX record of the recipient domain to identify this), replace <attacker@attackerdomain.com> with the domain you procured and setup earlier, replace <Legitimate_Sender@spoofed.com> with the address and domain you're spoofing and replace <target@target.com.au> with your target recipient.
 
     telnet target.mailserver.com 25
     helo attackerdomain.com
