@@ -35,7 +35,7 @@ What we're abusing here is a weakness in the way emails are delivered, authentic
     helo attackerdomain.com <--- If the SMTP.MailFrom is empty (row below), SPF authentication instead relies on the SMTP.helo
     mail from: attacker@attackerdomain.com <-- This is where SPF checks are typically performed. If we mis-align this to the 'Mail Header From' we can trick the recipient
     rcpt to: target@target.com.au
-    data
+    data <--- Everything from here down is presented to the user in the traditional email format. Everything above is hidden from the user as SMTP headers
     from: "Sender, Legitimate" <Legitimate_Sender@spoofed.com> <--- This is where SPF-bypass occurs - DMARC protects against this by performing an alignment check betwen both 'From' values
     to: target@target.com.au
     subject: Presentation - Email Demo
