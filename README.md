@@ -29,13 +29,13 @@ To perform an SPF-bypass attack, simply run the below telnet commands that can b
 
     .
 
-What we're abusing here is a weakness in the way emails are delivered, authenticated and presented to a users screen. If we break down each component of the above mail delivery we can see how the SPF-bypass abuses a domain misalignment between the 'SMTP MailFrom' and 'Mail Header From':
+What we're abusing here is a weakness in the way emails are delivered, authenticated and presented to a users screen. If we break down each component of the above mail delivery we can see how the SPF-bypass abuses a domain misalignment between the Mail Envelope 'SMTP.MailFrom' and Mail Header 'From':
 
     telnet target.mailserver.com 25 
     helo attackerdomain.com <--- If the SMTP.MailFrom is empty (row below), SPF authentication instead relies on the SMTP.helo
-    mail from: attacker@attackerdomain.com <-- This is where SPF checks are typically performed. If we mis-align this to the 'Mail Header From' we can trick the recipient
+    mail from: attacker@attackerdomain.com <-- This is where SPF checks are typically performed. If we mis-align this to the Mail Header 'From' we can trick the recipient
     rcpt to: target@target.com.au
-    data <--- Everything from here down is presented to the user in the traditional email format. Everything above is hidden from the user as SMTP headers
+    data <--- Everything from here down is presented to the user in the traditional email format. Everything above is hidden from the user as the Mail Envelope
     from: "Sender, Legitimate" <Legitimate_Sender@spoofed.com> <--- This is where SPF-bypass occurs - DMARC protects against this by performing an alignment check betwen both 'From' values
     to: target@target.com.au
     subject: Presentation - Email Demo
