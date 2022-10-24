@@ -1,5 +1,5 @@
 # spf-bypass
-PLEASE NOTE THIS PROJECT WILL BE SUBJECT TO FREQUENT CHANGES
+See this blog for an overview of [email spoofing techniques](https://caniphish.com/phishing-resources/blog/sending-spoofed-emails).
 
 This project is meant to educate defenders and demonstrate the ease at which threat actors can abuse insecure domains for the delivery of spoofed email.
 Utilising a security deficiency known as SPF-bypass, threat actors can deliver emails which provide no indication of malicious intent and can fool the most experienced Security professionals.
